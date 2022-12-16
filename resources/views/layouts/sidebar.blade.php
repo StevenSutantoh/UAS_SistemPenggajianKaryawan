@@ -62,6 +62,17 @@
         </li>
         ';
 
+        $Department_Menu = '
+        <li class="nav-item">
+            <a href="/admin/department" class="nav-link">
+                <i class="nav-icon fas fa-archive"></i>
+                <p>
+                Department
+                </p>
+            </a>
+        </li>
+        ';
+
 
         if ($session->role == 'payroll'){
             echo $User_Menu;
@@ -70,12 +81,14 @@
             echo $Employee_Menu;
             echo $Attendance_Menu;
             echo $Payslip_Menu;
+            echo $Department_Menu;
         }
 
         if ($session->role == 'hr'){
             echo $Attendance_Menu;
             echo $Employee_Menu;
             echo $Contract_Menu;
+            echo $Department_Menu;
         }
 
         if ($session->role == 'bpjs_hr'){

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\datakaryawanController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\Admin\payslipController;
 use Illuminate\Http\Request;
 
@@ -63,9 +65,15 @@ Route::resource('admin/contract', 'App\Http\Controllers\Admin\contractController
 Route::resource('admin/attendance', 'App\Http\Controllers\Admin\attendanceController');
 Route::resource('admin/bpjs_data', 'App\Http\Controllers\Admin\bpjs_dataController');
 Route::resource('admin/payslip', 'App\Http\Controllers\Admin\payslipController');
+Route::resource('admin/department', 'App\Http\Controllers\Admin\departmentController');
+Route::get('/laporan/datakaryawan',[LaporanController::class,'index']);
+Route::get('/laporan/datakaryawan/pdf',[LaporanController::class,'cetak_pdf']);
 
 Route::get('admin/compute_payslip',
 function(Request $request){ 
     return payslipController::compute($request);
 });
 
+Route::get('/datakaryawan', function () {
+    return view('datakaryawan');
+});
